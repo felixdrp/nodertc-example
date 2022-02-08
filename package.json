@@ -1,0 +1,39 @@
+{
+  "name": "nodertc-example",
+  "version": "0.0.1",
+  "description": "nodertc example",
+  "main": "index.js",
+  "scripts": {
+    "test": "npx eslint .",
+    "start": "node example-express.js",
+    "pions": "node example-pions.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/felixdrp/nodertc-example.git"
+  },
+  "keywords": [
+    "webrtc",
+    "nodertc",
+    "rtc",
+    "dtls",
+    "sctp",
+    "wrtc",
+    "websocket",
+    "stun",
+    "turn",
+    "ice"
+  ],
+  "author": "felixdrp <felixdrp@gmail.com>",
+  "bugs": {
+    "url": "https://github.com/felixdrp/nodertc-example/issues"
+  },
+  "homepage": "https://github.com/felixdrp/nodertc-example",
+  "devDependencies": {
+  },
+  "dependencies": {
+    "express": "^4.16.3",
+    "morgan": "^1.9.1",
+    "nodertc": "github:felixdrp/nodertc#local-modules"
+  }
+}
