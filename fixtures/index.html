@@ -4,9 +4,23 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>WebRTC Console Demo</title>
+  <link rel="stylesheet" href="/main.css">
 </head>
 <body>
   <h1>Open your <del>eyes</del> console</h1>
+  <div id="buttons">
+    <button id="sendButton">Send</button>
+  </div>
+  <div id="sendReceive">
+    <div id="send">
+        <h2>Send</h2>
+        <textarea id="dataChannelSend" placeholder=""></textarea>
+    </div>
+    <div id="receive">
+        <h2>Receive</h2>
+        <textarea id="dataChannelReceive" disabled=""></textarea>
+    </div>
+  </div>
   <script defer src="/client.js"></script>
 </body>
 </html>

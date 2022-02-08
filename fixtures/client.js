@@ -29,23 +29,22 @@ pc.addEventListener('negotiationneeded', async () => {
   await pc.setLocalDescription(offer);
 });
 
-pc.addEventListener('datachannel', ({ channel }) => {
-  console.log('got channel', channel);
+// pc.addEventListener('datachannel', ({ channel }) => {
+//   console.log('got channel', channel);
 
-  channel.addEventListener('open', () => {
-    console.log('[dc] channel is ready', channel);
+//   channel.addEventListener('open', () => {
+//     console.log('[dc] channel is ready', channel);
+//     // channel.send(`Hello, world!`);
+//   });
 
-    channel.send(`Hello, world!`);
-  });
+//   channel.addEventListener('close', () => {
+//     console.log('[dc] channel is closed');
+//   });
 
-  channel.addEventListener('close', () => {
-    console.log('[dc] channel is closed');
-  });
-
-  channel.addEventListener('message', ({ data }) => {
-    console.log('got message: %s', data.toString());
-  });
-});
+//   channel.addEventListener('message', ({ data }) => {
+//     console.log('got message: %s', data.toString());
+//   });
+// });
 
 const channel = pc.createDataChannel('console');
 
@@ -71,9 +70,11 @@ channel.addEventListener('message', async (event) => {
     default:
       msg = data.toString();
   }
-  console.log('[dc] type %s, got message: %s', dataType, msg);
 
-  channel.send(`Hello, NodeRTC!`);
+  receiveText.value = receiveText.value + `[dc] type ${dataType}, got message: ${msg}\n`
+  // receiveText Move scroll to the end
+  receiveText.scroll(0, receiveText.scrollHeight)
+  console.log('[dc] type %s, got message: %s', dataType, msg);
 });
 
 /**
@@ -93,3 +94,8 @@ async function sendOffer(offer) {
 
   return res.json();
 }
+
+const sendButton = document.querySelector('#sendButton')
+const sendText = document.querySelector('#dataChannelSend')
+const receiveText = document.querySelector('#dataChannelReceive')
+sendButton.onclick = () => channel.send(sendText.value)
